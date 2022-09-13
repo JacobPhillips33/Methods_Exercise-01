@@ -42,7 +42,7 @@ namespace Methods_Exercise_01_Answers
 
             Console.WriteLine("---------------------------Is Prime Method-------------------------");
             AddSpaces();
-            IsPrime();
+            Console.WriteLine(IsPrime());
             AddSpaces();
         }
 
@@ -70,11 +70,13 @@ namespace Methods_Exercise_01_Answers
 
         public static void SayHello()
         {
-            Console.WriteLine("Please enter your first name:");
+            Console.Write("Please enter your first name: ");
             var firstName = Console.ReadLine();
+            Console.WriteLine();
 
-            Console.WriteLine("Please enter your last name:");
+            Console.Write("Please enter your last name: ");
             var lastName = Console.ReadLine();
+            Console.WriteLine();
 
             Console.WriteLine($"Hello, {firstName} {lastName}!");
         }
@@ -88,6 +90,7 @@ namespace Methods_Exercise_01_Answers
         {
             Console.WriteLine("What is your name?");
             var name = Console.ReadLine();
+            Console.WriteLine();
 
             Console.WriteLine($"Hello, {name}. It is nice to meet you.");
         }
@@ -100,11 +103,14 @@ namespace Methods_Exercise_01_Answers
         public static void Exponentiate()
         {
             Console.WriteLine("This calcuation raises your first number to the power of your second number.");
-            Console.WriteLine("Please enter your first number:");
+            Console.WriteLine();
+            Console.Write("Please enter your first number: ");
             double number = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine();
 
-            Console.WriteLine("Please enter your second number:");
+            Console.Write("Please enter your second number: ");
             double powerOf = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine();
 
             double answer = Math.Pow(number, powerOf);
             Console.WriteLine($"{number} raisded to the power of {powerOf} equals {answer}");
@@ -114,34 +120,57 @@ namespace Methods_Exercise_01_Answers
 
         // DONE: Create a method called IsPrime() that asks the user for a number then returns true if the number is prime or false otherwise
         // (don't forget to prompt the user to enter the number!)
+
+        //Note: I have my original solution commented out below this method. It worked but was not as elegant.
+
+        public static bool IsPrime()
+        {
+            Console.Write("Input the number and i'll check to see if it's prime: ");
+            var input = double.Parse(Console.ReadLine());
+
+            int counter = 2;
+            while (counter < input)
+            {
+                if (input % counter == 0)
+                {
+                    return false;
+                }
+                counter++;
+            }
+            return true;
+        }
+
+        //This was my original code for the IsPrime challenge problem. While it did work, it is not as elegant of a solution as 
+        //the one above that I got from John Ward's answers.
+
         //Note: I adjusted the true or false output to be a string that states if the value is prime or not.
 
-        public static void IsPrime()
-        {
-            Console.WriteLine("Enter a number to check if it is a Prime number:");
+        //public static void IsPrime()
+        //{
+        //    Console.WriteLine("Enter a number to check if it is a Prime number:");
 
-            int num = Convert.ToInt32(Console.ReadLine());
+        //    int num = Convert.ToInt32(Console.ReadLine());
 
-            int flag = 0;
-            int isPrime = num/2;
-            
-            for (int i = 2; i <= isPrime; i++)
-            {                
-                if (num % i == 0)
-                {
-                    Console.WriteLine("Number is not prime.");
-                    flag = 1;
-                    break;
-                }            
-                              
-            }
+        //    int flag = 0;
+        //    int isPrime = num/2;
 
-            if (flag == 0)
-            {
-                Console.WriteLine("Number is prime.");
-            }                      
+        //    for (int i = 2; i <= isPrime; i++)
+        //    {                
+        //        if (num % i == 0)
+        //        {
+        //            Console.WriteLine("Number is not prime.");
+        //            flag = 1;
+        //            break;
+        //        }            
+
+        //    }
+
+        //    if (flag == 0)
+        //    {
+        //        Console.WriteLine("Number is prime.");
+        //    }                      
 
 
-        }
+        //}
     }
 }
